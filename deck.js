@@ -3,13 +3,37 @@
 
 const ranks = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king']
 const suits = ['hearts', 'clubs', 'spades', 'diamonds']
+const rankScores = { ace: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, jack: 11, king: 12, queen: 13 }
+
 
 
 //Create Deck
-function Deck (suits,ranks){
+function Deck (suits,ranks, rankScores){
   this.suits = suits
   this.rank = ranks
+  this.rankScores = function(){
+    for ( j=0; j<ranks.length; j++) {
+
+            for( i=0 ; i< suits.length; i++)
+            {
+
+
+              cardTitle = ranks[j] + " of " + suits[i]
+              rankScore = rankScores[ranks[j]]
+
+               cards = new Card(suits[i],ranks[j],cardTitle,rankScore)
+
+
+              console.log(cards)
+              console.log(rankScore)
+
+
+            }
+    }
+  }
 }
+
+
 
 let deck = new Deck(ranks,suits)
 
@@ -17,6 +41,7 @@ function getRandomCard(){
 
   let fullDeck = createDeck()
   randomCard =   fullDeck[Math.floor(Math.random()*fullDeck.length)];
+
   //console.log(randomCard)
   return randomCard
 
@@ -44,9 +69,15 @@ function shuffleCards(){
 
 
 
-function createDeck(){
-  let card
+function createDeck(ranks,suits,ranksScores){
+  let card = []
   let deck  = []
+
+  var card = [
+  { rank: 
+    suit:
+    score:
+];
 
   for (i=0; i < ranks.length; i++){
     for (j=0; j < suits.length; j++){
@@ -85,7 +116,17 @@ function play(){
      console.log("round " + round)
      console.log("Player 1 card " + player1Hand[i])
      console.log("Player 2 card " + player2Hand[i])
+     //rankScore = rankScores[ranks[j]]
+     if(player1Hand[i] > player2Hand[i]){
+
+        console.log("player one won this round")
+     }
+     else{
+       console.log("player two won this round")
+     }
+
      round ++
+
    }
 
 //console.log("roundwinner" + roundwinner )
